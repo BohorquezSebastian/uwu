@@ -173,7 +173,7 @@
     <footer>Esta página existe porque tú me inspiras a ser mejor  ✦</footer>
   </main>
   <script>
-    // PERSONALIZA AQUÍ. También puedes usar la URL: para_ti.html?para=Valentina&de=Sebastián
+    
     const PERSONALIZACION = { ella: '', tu: '' };
     const parametros = new URLSearchParams(location.search);
     const ella = (parametros.get('para') || PERSONALIZACION.ella).trim().slice(0, 60);
@@ -213,8 +213,8 @@
     document.getElementById('openFromHero').addEventListener('click',()=>{document.getElementById('carta').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});openLetter();});
     const mensajes = [
       'Hay sonrisas bonitas… y luego está la tuya, que se me queda dando vueltas todo el día.',
-      'Contigo, hasta una conversación sencilla termina siendo una de mis partes favoritas del día.',
-      'A veces me descubro sonriendo sin razón. Después me acuerdo de que sí hay una: tú.'
+      'Contigo, hasta lo mas simple  termina siendo una de mis partes favoritas de mi vida.',
+      'A veces me descubro sonriendo sin razón. Después analizo y es porque te tengo a ti'
     ];
     const noteText=document.getElementById('note-text');
     document.querySelectorAll('.note-btn').forEach(button=>button.addEventListener('click',()=>{
