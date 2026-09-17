@@ -74,9 +74,22 @@
     footer { text-align:center; color:#a992ab; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; }
     .burst { position:fixed; top:50%; left:50%; width:13px; height:13px; z-index:5; pointer-events:none; animation:burst .9s ease-out forwards; }
     .burst svg { width:100%; height:100%; fill:#f7c0cb; }
+    
+    /* GALERÍA DE FOTOS */
+    .gallery-section { max-width:1000px; margin:100px auto 80px; text-align:center; }
+    .gallery-section h2 { margin-bottom:50px; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:35px; padding:0 clamp(20px,5vw,40px); }
+    .gallery-card { position:relative; overflow:hidden; border-radius:16px; box-shadow:0 20px 60px #0c071c70; transition:transform .4s cubic-bezier(.23,1,.32,1), box-shadow .4s ease; aspect-ratio:1; }
+    .gallery-card:hover { transform:translateY(-10px); box-shadow:0 30px 80px #0c071ca0; }
+    .gallery-img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+    .gallery-card:hover .gallery-img { transform:scale(1.08); }
+    .gallery-overlay { position:absolute; inset:0; background:linear-gradient(135deg,#371f4a99 0%,#5b304899 100%); display:flex; align-items:flex-end; padding:clamp(20px,8vw,35px); opacity:0; transition:opacity .4s ease; }
+    .gallery-card:hover .gallery-overlay { opacity:1; }
+    .gallery-text { color:var(--cream); font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.2rem,3vw,1.5rem); line-height:1.4; text-align:left; max-width:100%; }
+    
     @keyframes burst { to { opacity:0; transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.2); } }
     @keyframes twinkle { 50% { opacity:.35; transform:scale(.65); } }
-    @media(max-width:750px) { .topbar .aside { display:none; } .hero { grid-template-columns:1fr; padding-top:70px; gap:8px; min-height:auto; } .hero .copy { text-align:center; } .eyebrow { justify-content:center; } .intro { margin-left:auto;margin-right:auto; } .visual { height:345px; order:-1; } .orb { max-width:300px; } .orbit { max-width:340px; } .orbit.two { max-width:365px; } .visual .center-text { font-size:2.3rem; max-width:210px; } .section-divider { margin-top:5px; margin-bottom:65px; } .notes { margin:95px auto; } }
+    @media(max-width:750px) { .topbar .aside { display:none; } .hero { grid-template-columns:1fr; padding-top:70px; gap:8px; min-height:auto; } .hero .copy { text-align:center; } .eyebrow { justify-content:center; } .intro { margin-left:auto;margin-right:auto; } .visual { height:345px; order:-1; } .orb { max-width:300px; } .orbit { max-width:340px; } .orbit.two { max-width:365px; } .visual .center-text { font-size:2.3rem; max-width:210px; } .section-divider { margin-top:5px; margin-bottom:65px; } .notes { margin:95px auto; } .gallery-grid { grid-template-columns:1fr; gap:25px; } }
     @media(max-width:390px) { h1 { font-size:3.15rem; } .site { padding-left:18px; padding-right:18px; } .visual { height:290px; } .orb { max-width:265px; } .envelope { height:205px; } }
     @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; } }
   </style>
@@ -107,14 +120,41 @@
       <button class="envelope" id="envelope" type="button" aria-controls="letter" aria-expanded="false" aria-label="Abrir la carta para ti"><span class="seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"/></svg></span></button>
       <p class="envelope-label" id="envelope-hint">Toca el sobre para abrir tu carta.</p>
       <div class="letter" id="letter" role="region" aria-label="Carta para ti" aria-hidden="true">
-        <p class="hello" id="letter-greeting">Hola, tú.</p>
-        <p>Quería regalarte algo diferente. No algo perfecto ni lleno de palabras enormes, sino algo sencillo que se pareciera a lo bonito que se siente conocerte.</p>
-        <p>Me gustan nuestras conversaciones, tus ocurrencias y esos momentos en los que, sin darte cuenta, me sacas una sonrisa. Me gusta descubrir poquito a poquito quién eres y encontrar nuevas razones para querer seguir compartiendo tiempo contigo.</p>
-        <p>No quiero adelantar historias ni prometer cosas que todavía estamos escribiendo. Solo quería que supieras que <strong>me hace muy feliz estar coincidiendo contigo</strong> y que tengo muchas ganas de seguir creando recuerdos a tu lado.</p>
+        <p class="hello" id="letter-greeting">Hola, mi amor.</p>
+        <p>Sinceramente no le se a las cartas y pense en hacer algo diferente y dije por que no una pagina, queria decirte que no pense encariñarme tanto contigo si bien tienes una sonrisa super linda lo que mas me gusto fue verme en tus ojos, me encanta que tu amor este conmigo, cogerte la mano, besarte, saber que pertenezco a ti.</p>
+        <p>No quiero adelantar historias ni prometer cosas que todavía estamos escribiendo. Solo quería que supieras que <strong>me hace muy feliz que te fijes en mi que estes contigo</strong> y que tengo muchas ganas de seguir recuerdos contigo y espero como mi novia y como mi esposa.</p>
         <p>Gracias por ser tú y por hacer que los días normales tengan algo especial.</p>
-        <p class="sign" id="signature">Con cariño, alguien que sonríe al pensarte ♡</p>
+        <p class="sign" id="signature">te amo mucho atentamente tu otaku rarito geimer ♡</p>
       </div>
     </section>
+
+    <!-- GALERÍA DE FOTOS -->
+    <div class="section-divider" aria-hidden="true">✳</div>
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <span class="section-label">Momentos que atesoro</span>
+      <h2 id="gallery-title">Cada foto guarda un recuerdo nuestro.</h2>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="foto1.jpg" alt="Nosotros sonriendo" class="gallery-img">
+          <div class="gallery-overlay">
+            <p class="gallery-text">Cuando estoy contigo me gusta verte ser como una niña mi niña ♡</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="foto2.jpg" alt="Nuestras manos juntas" class="gallery-img">
+          <div class="gallery-overlay">
+            <p class="gallery-text">Me gusta sentir tu mano con la mía, me da seguridad ♡</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img src="foto3.jpg" alt="Juntos" class="gallery-img">
+          <div class="gallery-overlay">
+            <p class="gallery-text">Espero que la próxima boda a la que vayamos sea la nuestra ♡</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="notes" aria-labelledby="notes-title">
       <span class="section-label">Tres cositas más</span>
       <h2 id="notes-title">Por si todavía no te lo había dicho…</h2>
@@ -122,15 +162,15 @@
       <div class="note-actions" role="group" aria-label="Mensajes especiales">
         <button class="note-btn" type="button" data-note="0" aria-pressed="true">Cuando sonríes</button>
         <button class="note-btn" type="button" data-note="1" aria-pressed="false">Cuando hablamos</button>
-        <button class="note-btn" type="button" data-note="2" aria-pressed="false">Cuando pienso en ti</button>
+        <button class="note-btn" type="button" data-note="2" aria-pressed="false">me miras</button>
       </div>
       <div class="note-display" aria-live="polite"><p id="note-text">Hay sonrisas bonitas… y luego está la tuya, que se me queda dando vueltas todo el día.</p></div>
     </section>
     <section class="closing" aria-label="Un último mensaje">
       <p class="quote">Ojalá nos sigamos encontrando en más días, más planes y <em>más sonrisas.</em></p>
-      <p>No hace falta una fecha especial para decirte que me encanta conocerte.</p>
+      <p>pense en decirte si querias ser mi novia por esta pagina pero creo que es mejor en persona.</p>
     </section>
-    <footer>Esta página existe porque tú me inspiras cosas bonitas ✦</footer>
+    <footer>Esta página existe porque tú me inspiras a ser mejor  ✦</footer>
   </main>
   <script>
     // PERSONALIZA AQUÍ. También puedes usar la URL: para_ti.html?para=Valentina&de=Sebastián
